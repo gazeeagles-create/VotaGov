@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | VotaGov</title>
+    <!-- 
+        Nota: Para este código funcionar corretamente, você precisaria de um framework 
+        CSS utilitário (como o Tailwind CSS) ou um arquivo CSS customizado.
+        As cores abaixo usam variáveis CSS para garantir a paleta exata.
+    -->
+    <style>
+        :root {
+            /* Cores solicitadas */
+            --cor-azul-escuro: #003366; /* Primária: Navegação, Botões principais */
+            --cor-verde-escuro: #006633; /* Sucesso: Indicadores ativos */
+            --cor-ocre: #CC9966; /* Destaque: Botões de ação e alertas */
+            --cor-branco: #ffffff;
+        }
+
+        .bg-azul-escuro { background-color: var(--cor-azul-escuro); }
+        .text-azul-escuro { color: var(--cor-azul-escuro); }
+        .bg-verde-escuro { background-color: var(--cor-verde-escuro); }
+        .bg-ocre { background-color: var(--cor-ocre); }
+        .hover-bg-ocre:hover { background-color: #A37E52; /* Ocre mais escuro no hover */ }
+
+        /* Classes básicas de layout (simulando classes utilitárias) */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .h-screen { height: 100vh; }
+        .w-full { width: 100%; }
+        .p-4 { padding: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .rounded-lg { border-radius: 0.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-sm { font-size: 0.875rem; }
+        .font-bold { font-weight: 700; }
+        .grid { display: grid; }
+        /* Responsividade (exemplo simplificado) */
+        @media (min-width: 768px) {
+            .md\\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .md\\:ml-64 { margin-left: 16rem; } /* Largura da sidebar */
+            .sidebar { width: 16rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- 1. Sidebar (Azul Escuro) -->
+    <aside class="sidebar fixed top-0 left-0 h-screen bg-azul-escuro text-white p-4 hidden md:block z-10">
+        <div class="text-2xl font-bold mb-8">VotaGov</div>
+        
+        <nav class="flex flex-col gap-2">
+            <a href="#" class="p-3 rounded-lg bg-green-700 font-bold">
+                Dashboard
+            </a>
+            <a href="#" class="p-3 rounded-lg hover:bg-white hover:text-azul-escuro transition duration-150">
+                <span class="mr-2">📊</span> Gestão de Votações
+            </a>
+            <a href="#" class="p-3 rounded-lg hover:bg-white hover:text-azul-escuro transition duration-150">
+                <span class="mr-2">👤</span> Cadastro de Usuários
+            </a>
+            <a href="#" class="p-3 rounded-lg hover:bg-white hover:text-azul-escuro transition duration-150">
+                <span class="mr-2">📜</span> Relatórios e Logs
+            </a>
+            <a href="#" class="p-3 rounded-lg hover:bg-white hover:text-azul-escuro transition duration-150">
+                <span class="mr-2">🔒</span> Auditoria
+            </a>
+        </nav>
+        
+        <div class="absolute bottom-4 w-56">
+            <a href="#" class="block p-3 text-center bg-gray-700 rounded-lg hover:bg-red-600 transition duration-150">
+                Sair
+            </a>
+        </div>
+    </aside>
+
+    <!-- 2. Conteúdo Principal -->
+    <div class="md:ml-64 p-4 lg:p-8">
+
+        <!-- Header (Mobile e Desktop) -->
+        <header class="bg-white shadow-md p-4 rounded-lg mb-6 flex justify-between items-center">
+            <h1 class="text-2xl text-azul-escuro font-bold">Dashboard</h1>
+            
+            <div class="flex items-center gap-4">
+                <span class="text-gray-600">Olá, Administrador</span>
+                <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-bold text-sm">AD</div>
+            </div>
+        </header>
+
+        <!-- Botão de Ação (Ocre) -->
+        <div class="mb-8">
+            <a href="#" class="inline-block px-6 py-3 text-white bg-ocre hover-bg-ocre font-bold rounded-lg shadow-md transition duration-200">
+                <span class="mr-2">+</span> Agendar Nova Votação
+            </a>
+        </div>
+
+        <!-- 3. Cards de KPI e Estatísticas (Branco, Verde Escuro, Ocre) -->
+        <section class="grid grid-cols-1 gap-6 md:grid-cols-3 mb-8">
+
+            <!-- Card 1: Votações Ativas (Destaque Verde Escuro) -->
+            <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-verde-escuro">
+                <p class="text-sm text-gray-500 font-medium">Votações Ativas Hoje</p>
+                <div class="text-3xl font-bold text-verde-escuro mt-1">05</div>
+                <p class="text-sm text-gray-400 mt-2">Acompanhamento em tempo real</p>
+            </div>
+
+            <!-- Card 2: Total de Votantes Cadastrados (Azul Escuro) -->
+            <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-azul-escuro">
+                <p class="text-sm text-gray-500 font-medium">Eleitores Cadastrados</p>
+                <div class="text-3xl font-bold text-azul-escuro mt-1">12.580</div>
+                <p class="text-sm text-gray-400 mt-2">Dados atualizados do sistema</p>
+            </div>
+
+            <!-- Card 3: Próxima Auditoria (Destaque Ocre) -->
+            <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-ocre">
+                <p class="text-sm text-gray-500 font-medium">Auditoria Pendente</p>
+                <div class="text-3xl font-bold text-ocre mt-1">14/11/2024</div>
+                <p class="text-sm text-gray-400 mt-2">Verificar logs de segurança</p>
+            </div>
+        </section>
+
+        <!-- 4. Tabela/Gráfico Principal (Relatório Recente) -->
+        <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold text-azul-escuro mb-4">Próximas Votações Agendadas</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Título</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Início</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <!-- Linha 1 -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Eleição da Diretoria 2025</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">20/Out - 10:00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-ocre">
+                                    Agendada
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-azul-escuro hover:text-green-700">Editar</a>
+                            </td>
+                        </tr>
+                        <!-- Linha 2 -->
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Consulta Pública sobre Orçamento</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/Nov - 08:00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                    Pendente
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="#" class="text-azul-escuro hover:text-green-700">Ver</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
